@@ -10,17 +10,25 @@ const studentSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true,
-        unique: [true, "Email is already in use"],
-        validate(value) {
-            if (validator.isEmail(value)) {
-                throw new Error('Invalid Email')
-            }
-        }
+        required: true
+        // unique: [true, "Email is already in use"],
+        // validate(value) {
+        //     if (validator.isEmail(value)) {
+        //         throw new Error('Invalid Email')
+        //     }
+        // }
     },
     phone: {
         type: String,
         required: true,
         unique: true
+    },
+    city: {
+        type: String,
+        requried: true
     }
 })
+
+const Student = new mongoose.model('Student', studentSchema)
+
+module.exports = Student
